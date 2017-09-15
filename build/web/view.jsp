@@ -22,7 +22,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ADMIN PORTAL</title>
         <link rel = "stylesheet" type = "text/css" href = "newcss.css" />
     </head>
     <script type="text/javascript" language="javascript" src="re.js">

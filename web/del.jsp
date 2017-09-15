@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ADMIN PORTAL</title>
     </head>
     <body>
         <%
@@ -33,27 +33,34 @@
             PreparedStatement ps ;
             ResultSet rs;
              String[] r={null};
+                 out.println(r[0]);
              if(request.getParameterValues("cb")!=null)
             {
            r=request.getParameterValues("cb");
+            out.println(r[0]);
             }
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:80/db","root","1234");
             int i=0;
+                out.println(r[0]);
             if(request.getParameter("de")!=null)
             {
+                    out.println(r[0]);
             while(r[i]!=null)
             {
-                 ps = con.prepareStatement("delete from emp where name='"+r[i]+"'");
+                    out.println(r[0]);
+                 ps = con.prepareStatement("delete from emp where id="+r[i]);
                ps.executeUpdate(); 
+               out.println("delete from emp where id="+r[i]);
                out.println(r[i]+" is removed from employee"+"<br>");
                i++;
             }
             }
+           
             }
             catch(Exception e)
             {
-                out.println();
+                out.println(e);
                 response.sendRedirect("view1.jsp");
             }
                   }

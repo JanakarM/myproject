@@ -37,7 +37,7 @@ if(u4.equals("male"))
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ADMIN PORTAL</title>
         <script type="text/javascript" language="javascript" src="re.js">
            
             
@@ -46,6 +46,15 @@ if(u4.equals("male"))
     </head>
     <body>
      <%
+         String val1="";
+         String val2="";
+         String val20="";
+         String val3="";
+         String val30="";
+         String val4="";
+         String val5="";
+         String val6="";
+         String val7="";
          String rq[]={""};
                  String dis="none";
          String d="inline",d1="inline";
@@ -92,7 +101,36 @@ if(u4.equals("male"))
                     d="none";
                 d1="none";
                 }
-                }catch(Exception e){d="none";}
+                }catch(Exception e)
+                {
+                    out.println(r[0]);
+                    d="none";
+               
+                 String qu2="select * from emp where id="+r[0];
+                   ps1=con.prepareStatement(qu2);
+                   rs=ps1.executeQuery();
+                    rs.next();
+                   val1=rs.getString("age");
+                   if(rs.getString("isregistered")=="1")
+                   {
+                   val2="checked";
+                   }
+                   else
+                   {
+                      val20="checked"; 
+                   }
+                    if(rs.getString("isverified")=="1")
+                   {
+                   val3="checked";
+                   }
+                   else
+                   {
+                      val30="checked"; 
+                   }
+                   val4=rs.getString("contact");
+                   val5=rs.getString("dept");
+                    out.println(r[0]);
+                }
             }
             else if(request.getParameter("up1")!=null)
             {
@@ -187,7 +225,7 @@ if(u4.equals("male"))
                  {
                      if(request.getParameter("contact")!=(null))
                 {
-                  qr[7]="contact='"+Integer.parseInt(request.getParameter("contact"))+"',";   
+                  qr[7]="contact='"+request.getParameter("contact")+"',";   
                 out.println(qr[7]);
                 }
                  }
@@ -220,14 +258,16 @@ if(u4.equals("male"))
                   while(rq[i]!=null)
                   {
                       out.println("in");
-                      qu="update emp set "+qr[1]+qr[2]+qr[3]+qr[4]+qr[5]+qr[6]+qr[7]+qr[8]+"name='"+rq[i]+ "' where name = '"+rq[i]+"'";
+                      qu="update emp set "+qr[1]+qr[2]+qr[3]+qr[4]+qr[5]+qr[6]+qr[7]+qr[8]+"id="+rq[i]+ " where id = "+rq[i]+"";
                       out.println(qu);
                  ps1 = con.prepareStatement(qu);
                  ps1.executeUpdate();
                 
                  i++;
                   }
-                 }catch(Exception e){}
+                 }catch(Exception e){
+                     response.sendRedirect("view.jsp");
+                  }
            }
             else if(request.getParameter("ok")!=null)
             {
@@ -261,7 +301,7 @@ if(u4.equals("male"))
                 catch(Exception e)
                 {
                   out.println(e);
-                  response.sendRedirect("view1.jsp");
+                  
                 }
             
             }
@@ -304,18 +344,18 @@ if(u4.equals("male"))
               %>
             <label style="display:<%=d%>">EMPNAME:</label><input  type="text" name="ename"  value='' style="display:<%=d%>" <%=re%>/><br/><br/>
             <label style="display:<%=d%>">ID:</label><input  type="text" name="id"  value='' style="display:<%=d%>" <%=re%>/><br/><br/>
-            <label style="display:<%=d1%>">AGE:</label><input  type="number" style="display:<%=d1%>" name="age" value='' /><br/><br/>
+            <label style="display:<%=d1%>">AGE:</label><input  type="number" style="display:<%=d1%>" name="age" value='<%=val1%>' /><br/><br/>
             <label style="display:<%=d%>">GENDER:</label><input  type="radio" name="gender" value="male" style="display:<%=d%>" checked> <p style="display:<%=d%>">Male</p>
             <input  type="radio" name="gender" value="female" style="display:<%=d%>"> <p style="display:<%=d%>">Female</p> <br><br>
-            <label style="display:'inline'">ISLICENSED:</label><input type="checkbox" name="l" value='true' checked />Yes 
-            <input type="checkbox" name="l" style="display:'inline'" value='false' />No <br/><br/>
-            <label style="display:'inline'">ISVERIFIED:</label><input  type="checkbox" name="v" value='true' checked />Yes 
-            <input  type="checkbox" name="v" value='false' />No <br/><br/>
+            <label style="display:'inline'">ISLICENSED:</label><input type="checkbox" name="l" value='true' <%=val2%> />Yes 
+            <input type="checkbox" name="l" style="display:'inline'" value='false' <%=val20%>/>No <br/><br/>
+            <label style="display:'inline'">ISVERIFIED:</label><input  type="checkbox" name="v" value='true' <%=val3%>  />Yes 
+            <input  type="checkbox" name="v" value='false' <%=val30%>/>No <br/><br/>
             <label style="display:<%=d%>">DOJ:</label><input  type="date" style="display:<%=d%>" name="doj"  value='' /><br/><br/>
             <label style="display:<%=d%>">PLACE:</label><input  type="text" style="display:<%=d%>" name="place" value='' /><br/><br/>
-            <label style="display:<%=d1%>">CONTACT:</label><input type="text" style="display:<%=d1%>" name="contact" value='' /><br/><br/>
+            <label style="display:<%=d1%>">CONTACT:</label><input type="text" style="display:<%=d1%>" name="contact" value='<%=val4%>' /><br/><br/>
             <label style="display:'inline'">DEPT:</label> <select name="dept" style="display:'inline'">
-                <option value="hai">dept</option>
+                <option value="hai"><%=val5%></option>
     <option value="testing">testing</option>
     <option value="sales">sales</option>
     <option value="dev">dev</option>

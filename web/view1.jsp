@@ -22,7 +22,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>ADMIN PORTAL</title>
         <link rel = "stylesheet" type = "text/css" href = "newcss.css" />
     </head>
     <script type="text/javascript" language="javascript" src="re.js">
@@ -199,11 +199,11 @@
            while(rs.next() && j<=q1)
            {
                i=1;
-               if(rs.getString(i)!=null)
+               if(rs.getString(2)!=null)
                {
                %>
                <tr>
-                   <td><input type="checkbox" value='<%=rs.getString(i)%>' name="cb" /></td>
+                   <td><input type="checkbox" value='<%=rs.getString(2)%>' name="cb" /></td>
                    <%
                    }
                        try
@@ -224,7 +224,7 @@
           %>
           </table><button class="dropbtn" type="button" onclick="fn4(2)" >Reset</button>   
           <button class="dropbtn" name="up"  value="up"onclick="this.form.action='register.jsp'">Update</button>
-       <button class="dropbtn" onclick="de" value="de">Delete</button>  
+       <button class="dropbtn" name="de" value="de">Delete</button>  
         <button class="dropbtn" onclick="this.form.action='admin.jsp'" value="de">Home</button>
                       </div>
           
