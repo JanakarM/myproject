@@ -3,6 +3,7 @@
     Created on : Sep 11, 2017, 4:14:15 AM
     Author     : Janakar-PT1585
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,15 +36,18 @@
             String u6=request.getParameter("place");
              String u7=request.getParameter("contact");
             String u8=request.getParameter("dept");
+            String u10=request.getParameter("doj");
+            String u9=u10.substring(0,4)+"/"+u10.substring(5,7)+"/"+u10.substring(8,10);
+            out.println(u9);
             Connection con;
             PreparedStatement ps ;
             ResultSet rs;
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:80/db","root","1234");
-            ps = con.prepareStatement("insert into emp values('"+u+"','"+u1+"','"+u2+"','"+u3+"','"+u4+"','"+u5+"','"+u6+"','"+u7+"','"+u8+"')");
+            ps = con.prepareStatement("insert into emp values('"+u+"','"+u1+"','"+u2+"','"+u3+"',"+u4+","+u5+",'"+u6+"','"+u7+"','"+u8+"',"+u9+")");
             ps.executeUpdate();
             out.println("NEW EMPLOYEE ADDED");
-            response.sendRedirect("admin.jsp");
+        response.sendRedirect("admin.jsp");
             }
             catch(Exception e)
             {

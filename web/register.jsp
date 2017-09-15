@@ -38,18 +38,8 @@ if(u4.equals("male"))
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <script type="text/javascript" language="javascript">
-            my1(e)
-            {
-                window.alert(e.keyCode);
-                if(e.keyCode===13)
-                {
-                    document.getElementsByName("ename")[0].style.display="none";
-                document.getElementsByName("id")[0].style.display="none";
-                    this.form.action="register.jsp";
-                this.form.submit();
-          }    
-        }
+        <script type="text/javascript" language="javascript" src="re.js">
+           
             
         </script>
        
@@ -58,7 +48,7 @@ if(u4.equals("male"))
      <%
          String rq[]={""};
                  String dis="none";
-         String d="enabled";
+         String d="inline",d1="inline";
          String re="required";
          String r[]={null};
          String v="none";
@@ -91,11 +81,22 @@ if(u4.equals("male"))
                 out.println(r[0]);
                 v="inline";
                 re="";
-                d="disabled";
+                try
+                {
+                if(r[1].equals(null))
+                {
+                d="none";
+                }
+                else
+                {
+                    d="none";
+                d1="none";
+                }
+                }catch(Exception e){d="none";}
             }
             else if(request.getParameter("up1")!=null)
             {
-                d="diabled";
+                d="none";
                 v="inline";
                  re="";
                 out.println("edhuku");
@@ -214,6 +215,8 @@ if(u4.equals("male"))
                  int i=0;
                  String qu=null;
                  out.println("out");
+                 try
+                 {
                   while(rq[i]!=null)
                   {
                       out.println("in");
@@ -224,6 +227,7 @@ if(u4.equals("male"))
                 
                  i++;
                   }
+                 }catch(Exception e){}
            }
             else if(request.getParameter("ok")!=null)
             {
@@ -249,15 +253,15 @@ if(u4.equals("male"))
              catch(Exception e)
                 {
                   out.println(e);
-                  
+                  response.sendRedirect("view1.jsp");
                 }
                
             }
             }
                 catch(Exception e)
                 {
-                  out.println("its okay");
-                  
+                  out.println(e);
+                  response.sendRedirect("view1.jsp");
                 }
             
             }
@@ -298,18 +302,19 @@ if(u4.equals("male"))
                   }
                   catch(Exception e){}
               %>
-            <label>EMPNAME:</label><input  type="text" name="ename"  value='' <%=d%> <%=re%>/><br/><br/>
-            <label>ID:</label><input  type="text" name="id"  value='' <%=d%> <%=re%>/><br/><br/>
-            <label>AGE:</label><input  type="number" name="age" value='' /><br/><br/>
-            <label>GENDER:</label><input  type="radio" name="gender" value="male"  > Male
-            <input  type="radio" name="gender" value="female" > Female <br><br>
-            <label>ISLICENSED:</label><input type="checkbox" name="l" value='true' <%=re%>/>yes
-            <input type="checkbox" name="l" value='false' <%=re%>/>no<br/><br/>
-            <label>ISVERIFIED:</label><input  type="checkbox" name="v" value='true' <%=re%>/>yes
-            <input  type="checkbox" name="v" value='false' <%=re%>/>no<br/><br/>
-            <label>PLACE:</label><input  type="text" name="place" value='' /><br/><br/>
-            <label >CONTACT:</label><input type="text" name="contact" value='' /><br/><br/>
-            <label>DEPT:</label> <select name="dept">
+            <label style="display:<%=d%>">EMPNAME:</label><input  type="text" name="ename"  value='' style="display:<%=d%>" <%=re%>/><br/><br/>
+            <label style="display:<%=d%>">ID:</label><input  type="text" name="id"  value='' style="display:<%=d%>" <%=re%>/><br/><br/>
+            <label style="display:<%=d1%>">AGE:</label><input  type="number" style="display:<%=d1%>" name="age" value='' /><br/><br/>
+            <label style="display:<%=d%>">GENDER:</label><input  type="radio" name="gender" value="male" style="display:<%=d%>" checked> <p style="display:<%=d%>">Male</p>
+            <input  type="radio" name="gender" value="female" style="display:<%=d%>"> <p style="display:<%=d%>">Female</p> <br><br>
+            <label style="display:'inline'">ISLICENSED:</label><input type="checkbox" name="l" value='true' checked />Yes 
+            <input type="checkbox" name="l" style="display:'inline'" value='false' />No <br/><br/>
+            <label style="display:'inline'">ISVERIFIED:</label><input  type="checkbox" name="v" value='true' checked />Yes 
+            <input  type="checkbox" name="v" value='false' />No <br/><br/>
+            <label style="display:<%=d%>">DOJ:</label><input  type="date" style="display:<%=d%>" name="doj"  value='' /><br/><br/>
+            <label style="display:<%=d%>">PLACE:</label><input  type="text" style="display:<%=d%>" name="place" value='' /><br/><br/>
+            <label style="display:<%=d1%>">CONTACT:</label><input type="text" style="display:<%=d1%>" name="contact" value='' /><br/><br/>
+            <label style="display:'inline'">DEPT:</label> <select name="dept" style="display:'inline'">
                 <option value="hai">dept</option>
     <option value="testing">testing</option>
     <option value="sales">sales</option>
@@ -317,10 +322,10 @@ if(u4.equals("male"))
     <option value="tech.sup">marketting</option>
     <option value="hr">hr</option>
   </select><br/><br/>
-  <label>.</label><input name="hr" type='password' style="display:<%=dis%>" /><label>.</label><input type="submit" name="ok" style="display:<%=dis%>" /><br>
-            <input style="margin-left: 100px" type="button" onclick="this.form.action='reg.jsp'" value="REGISTER" />
+  <label style="display:<%=d%>">.</label><input name="hr" type='password' style="display:<%=dis%>" /><label style="display:<%=d%>">.</label><input type="submit" name="ok" style="display:<%=dis%>" /><br>
+            <input style="margin-left: 100px" type="submit" style="display:<%=d%>" onclick="this.form.action='reg.jsp'"  value="REGISTER" />
             <button style="margin-left: 15px;display:<%=v%>" name="up1" onclick="this.form.action='register.jsp'"  >UPDATE</button><br>
-            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" /><button style="margin-left: 10px" class="dropbtn" onclick="this.form.action='admin.jsp'" value="de">Home</button>
+            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" /><button type="button" onclick="window.location.href='admin.jsp'" style="margin-left: 10px" class="dropbtn" onclick="n()" value="de">Home</button>
         </form> 
        
     </body>

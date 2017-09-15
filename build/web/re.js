@@ -1,3 +1,7 @@
+function n()
+{
+    window.alert("okay");
+}
 function fn4(j)
              {
                  if(j===1)

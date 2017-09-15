@@ -155,6 +155,7 @@
     <input type="checkbox" name="col" value="7" checked = true/>place<br>
    <input type="checkbox" name="col" value="8" checked = true/>dept<br>
    <input type="checkbox" name="col" value="9" checked = true/>contact<br>
+    <input type="checkbox" name="col" value="10" checked = true/>doj<br>
    <button class="dropbtn" onclick="fn3()" >Apply</button><button class="dropbtn" onclick="fn4(1)">Reset</button>
   </div>
 </div>
@@ -171,6 +172,7 @@
           <input class="dropbtna" type="submit" name="submit" id="7"value="place      " onclick="fun(7)"/><br>
           <input class="dropbtna" type="submit" name="submit" id="8"value="dept       " onclick="fun(8)"/><br>
           <input class="dropbtna" type="submit" name="submit" id="9"value="contact    " onclick="fun(9)"/>
+          <input class="dropbtna" type="submit" name="submit" id="9"value="doj    " onclick="fun(10)"/>
       </div>
   </div>
       
@@ -189,6 +191,7 @@
  <th>place    <button type="button" class="dropbtn" id="7a" onclick="fn2(7)">^</button></th>
     <th>dept      <button type="button" class="dropbtn" id="8a" onclick="fn2(8)">^</button></th>
     <th>contact     <button type="button" class="dropbtn" id="9a" onclick="fn2(9)" >^</button></th>
+    <th>doj     <button type="button" class="dropbtn" id="9a" onclick="fn2(10)" >^</button></th>
   </tr>
             <%
            int i,j=p;
