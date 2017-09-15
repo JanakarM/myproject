@@ -218,13 +218,17 @@ if(u4.equals("male"))
                  i++;
                   }
                   
+                  
+                  
            }
+            
             }
                 catch(Exception e)
                 {
                   out.println("its okay");
                   
                 }
+            
             }
            %> <style>
             form{
