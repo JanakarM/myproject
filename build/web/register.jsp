@@ -41,19 +41,23 @@ if(u4.equals("male"))
         <script type="text/javascript" language="javascript">
             my1(e)
             {
-                alert(e.keyCode);
+                window.alert(e.keyCode);
                 if(e.keyCode===13)
+                {
+                    document.getElementsByName("ename")[0].style.display="none";
+                document.getElementsByName("id")[0].style.display="none";
                     this.form.action="register.jsp";
                 this.form.submit();
-              'document.getElementById("form1").action="register.jsp";
-            }
+          }    
+        }
             
         </script>
        
     </head>
     <body>
      <%
-         String dis="none";
+         String rq[]={""};
+                 String dis="none";
          String d="enabled";
          String re="required";
          String r[]={null};
@@ -91,8 +95,11 @@ if(u4.equals("male"))
             }
             else if(request.getParameter("up1")!=null)
             {
+                d="diabled";
+                v="inline";
+                 re="";
                 out.println("edhuku");
-                String rq[]=request.getParameterValues("rr");
+                rq=request.getParameterValues("rr");
                 out.println(rq[0]);
                 String qr[]={"","","","","","","","","","",""};
                try
@@ -217,11 +224,35 @@ if(u4.equals("male"))
                 
                  i++;
                   }
-                  
-                  
-                  
            }
-            
+            else if(request.getParameter("ok")!=null)
+            {
+                
+                String rz[]=request.getParameterValues("rr1");
+               int h=0;
+             try
+             {
+               while(rz[h]!=null)
+               {
+                   String qu2="select contact from emp where name='"+rz[h]+"'";
+                   ps1=con.prepareStatement(qu2);
+                   rs=ps1.executeQuery();
+                  rs.next();
+                   out.println("inserting"+rz[h]);
+                String qu1="insert into login(name,password,mobile) values('"+rz[h]+"','"+request.getParameter("hr")+"',"+rs.getString(1)+")";
+                  ps1 = con.prepareStatement(qu1);
+                 ps1.executeUpdate();
+                  out.println("inserting"+rz[h]);
+                  h++;
+               }
+             }
+             catch(Exception e)
+                {
+                  out.println(e);
+                  
+                }
+               
+            }
             }
                 catch(Exception e)
                 {
@@ -246,7 +277,7 @@ if(u4.equals("male"))
             
         </style>
         
-           <form id="form1" action='reg.jsp' method="GET">
+           <form id="form1" action='register.jsp' method="GET">
                
               <%
                   try
@@ -255,6 +286,13 @@ if(u4.equals("male"))
               while(r[j]!=null)
               {
                    out.println("<input type='hidden' name='rr' value='"+r[j]+"' />");
+                   j++;
+              }
+                
+            j=0;
+              while(rq[j]!=null)
+              {
+                   out.println("<input type='hidden' name='rr1' value='"+rq[j]+"' />");
                    j++;
               }
                   }
@@ -279,10 +317,10 @@ if(u4.equals("male"))
     <option value="tech.sup">marketting</option>
     <option value="hr">hr</option>
   </select><br/><br/>
-  <label>.</label><input name='hr' type='password' onkeypress='my1(event)' style="display:<%=dis%>" /><br>
-            <input style="margin-left: 100px" type="submit" value="REGISTER" />
-            <button style="margin-left: 15px;display:<%=v%>" name="up1" onclick='this.form.action="register.jsp"'  >UPDATE</button><br>
-            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" />
+  <label>.</label><input name="hr" type='password' style="display:<%=dis%>" /><label>.</label><input type="submit" name="ok" style="display:<%=dis%>" /><br>
+            <input style="margin-left: 100px" type="button" onclick="this.form.action='reg.jsp'" value="REGISTER" />
+            <button style="margin-left: 15px;display:<%=v%>" name="up1" onclick="this.form.action='register.jsp'"  >UPDATE</button><br>
+            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" /><button style="margin-left: 10px" class="dropbtn" onclick="this.form.action='admin.jsp'" value="de">Home</button>
         </form> 
        
     </body>

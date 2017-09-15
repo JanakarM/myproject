@@ -77,7 +77,7 @@
             MOBILE:<input style="margin-left: 40px" type="text" name="mobile" value="<%=u3%>" /><br/><br/>
             <input style="margin-left: 100px" type="submit" value="ADD" />
             <button style="margin-left: 15px;display:<%=v%>" onclick='this.form.action="adds.jsp"'  >UPDATE</button><br>
-            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" />
+            <input style="margin-left: 100px;margin-top:15px" type="reset" value="CLEAR" /><button style="margin-left: 10px" class="dropbtn" onclick="this.form.action='admin.jsp'" value="de">Home</button>
         </form>
     </body>
 </html>
