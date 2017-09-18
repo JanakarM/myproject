@@ -266,7 +266,7 @@ if(u4.equals("male"))
                  i++;
                   }
                  }catch(Exception e){
-                     response.sendRedirect("view.jsp");
+                     
                   }
            }
             else if(request.getParameter("ok")!=null)

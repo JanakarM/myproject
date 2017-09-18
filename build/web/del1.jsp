@@ -14,11 +14,12 @@
     </head>
     <body>
         <%
-            String s=request.getParameter("ename");
+            
             if(session.getAttribute("theName")!=null)
               {
              try
             {
+                String s=request.getParameter("name");
             Connection con;
             PreparedStatement ps ;
             ResultSet rs;

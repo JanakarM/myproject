@@ -33,7 +33,7 @@
             PreparedStatement ps ;
             ResultSet rs;
              String[] r={null};
-                 out.println(r[0]);
+                
              if(request.getParameterValues("cb")!=null)
             {
            r=request.getParameterValues("cb");

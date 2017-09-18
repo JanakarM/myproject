@@ -34,7 +34,7 @@
                 int c=1,le=0;
              if(session.getAttribute("theName")!=null)
               {
-            out.println("<h3>Employees</h3>");
+            out.println("<h3>Admins</h3>");
                  try
             {
             Connection con;
@@ -169,7 +169,7 @@
       
   </div>
              <div style="overflow-x:auto;">
-                  <form action="del.jsp">
+                  <form action="del1.jsp">
                       <div><table>
   <tr>
       <th></th>
@@ -182,11 +182,11 @@
            while(rs.next() && j<=q1)
            {
                i=1;
-               if(rs.getString(i)!=null)
+               if(rs.getString(2)!=null)
                {
                %>
                <tr>
-                   <td><input type="checkbox" value='<%=rs.getString(i)%>' name="cb" /></td>
+                   <td><input type="checkbox" value='<%=rs.getString(2)%>' name="cb" /></td>
                    <%
                    }
                        try
@@ -207,7 +207,7 @@
           %>
           </table><button class="dropbtn" type="button" onclick="fn4(2)" >Reset</button>   
           <button class="dropbtn" name="up"  value="up"onclick="this.form.action='register.jsp'">Update</button>
-       <button class="dropbtn" onclick="de" value="de">Delete</button>  
+       <button class="dropbtn" name="de" value="de">Delete</button>  
        <button class="dropbtn" onclick="this.form.action='admin.jsp'" value="de">Home</button>
                       </div>
           
