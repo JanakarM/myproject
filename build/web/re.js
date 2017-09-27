@@ -1,6 +1,28 @@
-function n()
+
+function ajax1()
 {
-    window.alert("okay");
+    var name={"UserId":document.getElementById("Userd").value};
+     var xmlHttpRequest = new XMLHttpRequest();
+  alert ("xmlHttpRequest=" + xmlHttpRequest);
+  xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
+  xmlHttpRequest.open("POST", "DeleteEmp", false);  
+  xmlHttpRequest.setRequestHeader("Content-type", "application/json");
+  alert("inside makeRequest()!"); 
+  xmlHttpRequest.send(JSON.stringify(name)); 
+}
+function getReadyStateHandler(xmlHttpRequest) {
+  return function() {
+      if (xmlHttpRequest.readyState == 4) {
+        alert ("xmlHttpRequest=" + xmlHttpRequest);
+      if (xmlHttpRequest.status == 200) {
+          alert("status=200");
+         var jsondata=JSON.parse(xmlHttpRequest.responseText);
+        alert(jsondata.msg);
+      } else {
+        alert("Http error " + xmlHttpRequest.status + ":" + xmlHttpRequest.statusText);
+      }
+    }
+  };
 }
 function fn4(j)
              {

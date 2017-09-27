@@ -11,11 +11,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ADMIN PORTAL</title>
     </head>
-    <body>
-        <form action="WelcomeUser" method ="POST">
-            UserId:<input type="text" name="UserId">
-            <input type="submit">
-        </form>
+    <body >
+       <script type="text/javascript" src="re.js">
       
-    </body>
+       </script>
+       
+        UserId:<input type="text" id="Userd">
+        <button id="somebutton" onclick="ajax1()">Delete</button>
+       </body>
 </html>

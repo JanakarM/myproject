@@ -12,7 +12,7 @@
         <title>ADMIN PORTAL</title>
     </head>
     <body>
-        <style>
+        <style src="newcss.css">
             form{
                 margin-left:380px;
                 border: 1px solid black;

@@ -124,12 +124,12 @@
            catch(Exception e){out.println(e);}
             
             %>
-            <form style="width:300px" action="view1.jsp" method="get">
+            <form style="width:300px">
                      <input type="submit" name="sub" class="dropbtn" value="<<"/>
                  <label id="lb" value=""><%=p%>-<label><%=q1%></label> of <%=le%></label>
                  <input type="hidden" value="<%=p%>" name="in1">
                  <input type="hidden" value="<%=q1%>" name="in2">
-                 <input type="submit" name="sub" class="dropbtn" value=">>"/>
+                 <input type="button" name="sub" class="dropbtn" value=">>"/>
                 
                      <div class="dropdown">
 <label onclick="fn6()" class="dropbtn"><%=b%></label>
