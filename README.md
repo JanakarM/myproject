@@ -1,5 +1,11 @@
 # myproject
-
+- Item 1
+- Item 2
+- Item 3
+  - Sub Item 1
+  - Sub Item 2
+   
+#^ two spaces
 1. A web application that can perform basic crud operations.
 2. Concepts and languages that are used in this project.
 3. ⋅⋅* Unordered sub-list. 
