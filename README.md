@@ -2,7 +2,7 @@
 
 1. A web application that can perform basic crud operations.
 2. Concepts and languages that are used in this project.
-  a. java 
+  -. java 
     b. jsp
     c. web servlet
     d. rest api
